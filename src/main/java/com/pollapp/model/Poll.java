@@ -106,13 +106,31 @@ public class Poll {
     public void setCreated(Date created) {
         this.created = created;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Poll [id=").append(id).append(", name=").append(name).append(", description=")
-               .append(description).append(", options=").append(options).append("]");
+        builder.append("Poll [id=").append(id).append(", name=").append(name).append(", owner=").append(owner)
+               .append(", description=").append(description).append(", options=").append(options).append("]");
         return builder.toString();
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (int) (id ^ (id >>> 32));
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        Poll other = (Poll) obj;
+        if (id != other.id) return false;
+        return true;
+    }
+    
 }

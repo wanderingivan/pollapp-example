@@ -26,9 +26,13 @@ public class User {
 	}
 	public User(String username){
 		super();
-		this.username =username;
+		this.username = username;
 	}
 	
+	public User(long id, String username) {
+	    this(id);
+	    this.username = username;
+    }
 	
 	public User(String username, String email, String description,
 			String password) {
@@ -38,8 +42,7 @@ public class User {
 		this.password = password;
 	}
 
-
-	public long getId() {
+    public long getId() {
 		return id;
 	}
 
