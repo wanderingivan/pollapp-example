@@ -46,6 +46,7 @@ public class PollServiceSecurityTests extends AbstractServiceTest {
 	public void testCreatePollAcl(){	
 		Poll poll = new Poll("name", null, null, null);
 		long id = service.createPoll(poll);
+		Mockito.verify(mockDao,Mockito.times(1)).createPoll(poll);
 		Acl acl = aclService.readAclById(new ObjectIdentityImpl(Poll.class,id)); 
 		assertNotNull(acl);
 		assertEquals(new PrincipalSid("a username"),acl.getOwner());

@@ -38,6 +38,7 @@ public class UserServiceSecurityTests extends AbstractServiceTest {
 		User user = new User("a username","email","description","password");
 		long id = service.createUser(user);
 		Acl acl = aclService.readAclById(new ObjectIdentityImpl(User.class,id)); 
+		Mockito.verify(userDao,Mockito.times(1)).createUser(user);
 		assertNotNull(acl);
 		assertNotNull(acl.getEntries());
 		assertEquals(2, acl.getEntries().size());
