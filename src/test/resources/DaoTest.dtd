@@ -1,0 +1,35 @@
+
+<!ELEMENT dataset (
+
+	users*,
+	polls*,
+	options*
+	
+)>
+
+<!ELEMENT users EMPTY>
+<!ATTLIST users
+    user_id     CDATA #IMPLIED
+	username    CDATA #REQUIRED
+	password    CDATA #REQUIRED
+	joined      CDATA #REQUIRED
+	email       CDATA #REQUIRED
+	description CDATA #IMPLIED
+>
+
+<!ELEMENT polls EMPTY>
+<!ATTLIST polls 
+	poll_id   CDATA #IMPLIED
+	poll_name CDATA #REQUIRED 
+	owner_id  CDATA #REQUIRED
+	votes     CDATA #REQUIRED
+	created   CDATA #REQUIRED
+>
+
+<!ELEMENT options EMPTY>
+<!ATTLIST options 
+	option_id   CDATA #IMPLIED
+	option_name CDATA #REQUIRED
+	poll_id     CDATA #REQUIRED
+	votes       CDATA #REQUIRED
+> 
