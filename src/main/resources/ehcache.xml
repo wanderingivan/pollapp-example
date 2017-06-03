@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ehcache xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+         xsi:noNamespaceSchemaLocation='http://ehcache.org/ehcache.xsd'>
+    <defaultCache eternal='true' maxElementsInMemory='100' overflowToDisk='false' />
+    <cache  name='polls' 
+    		maxElementsInMemory='10000' 
+    		eternal='false' 
+    	    maxEntriesLocalDisk="1000"
+    		memoryStoreEvictionPolicy="LFU" 
+    		diskSpoolBufferSizeMB="20"
+    		timeToLiveSeconds="600"
+    		transactionalMode="off"
+    		/>  
+    <cache  name='recent' 
+    		maxElementsInMemory='100' 
+    		eternal='false' 
+    	    maxEntriesLocalDisk="1000"
+    		memoryStoreEvictionPolicy="LFU" 
+    		diskSpoolBufferSizeMB="20"
+    		timeToLiveSeconds="600"
+    		transactionalMode="off"
+    		/>  
+    <cache  name='image' 
+    		maxElementsInMemory='10000' 
+    		eternal='false' 
+    	    maxEntriesLocalDisk="1000"
+    		memoryStoreEvictionPolicy="LFU" 
+    		diskSpoolBufferSizeMB="100"
+    		timeToLiveSeconds="600"
+    		transactionalMode="off"
+    		/>
+    <cache  name='b64' 
+    		maxElementsInMemory='10000' 
+    		eternal='false' 
+    	    maxEntriesLocalDisk="1000"
+    		memoryStoreEvictionPolicy="LFU" 
+    		diskSpoolBufferSizeMB="100"
+    		timeToLiveSeconds="600"
+    		transactionalMode="off"
+    		/>
+     <cache  name='aclCache' 
+    		maxElementsInMemory='10000' 
+    		eternal='false' 
+    	    maxEntriesLocalDisk="1000"
+    		memoryStoreEvictionPolicy="LFU" 
+    		diskSpoolBufferSizeMB="100"
+    		timeToLiveSeconds="600"
+    		transactionalMode="off"
+    		/>
+</ehcache>
