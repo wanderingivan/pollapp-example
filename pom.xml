@@ -281,6 +281,13 @@
         <filtering>true</filtering>
       </resource>
     </resources>
+    
+    <testResources>
+      <testResource>
+        <directory>src/test/resources/</directory>
+        <filtering>true</filtering>
+      </testResource>
+    </testResources>
   
     <plugins>
     
@@ -590,10 +597,23 @@
             </executions>
             
           </plugin>
+          
         </plugins>
       </build>
     
     </profile>    
+    
+    <profile>
+      <id>chrome-browser</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <browser>chrome</browser>
+        <driverBinary>chromeDriverBinary</driverBinary>
+        <driverName>chromedriver</driverName>
+      </properties>
+    </profile>
     
   </profiles>
   
