@@ -31,7 +31,7 @@ BEGIN
 	    SET optionName = LEFT(Remainder, Pos - 1);
       END IF;
       IF TRIM(optionName) != '' THEN
-	    INSERT INTO options(option_name,poll_id) VALUES (optionName,pollId);
+	    INSERT INTO options(option_name,poll_id,added) VALUES (optionName,pollId,CURRENT_TIMESTAMP());
  	  END IF;
       SET remainder = SUBSTRING(remainder, Pos + 1);
     END WHILE;

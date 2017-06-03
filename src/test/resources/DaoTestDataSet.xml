@@ -7,7 +7,7 @@
 	<polls poll_id="4" poll_name="name" owner_id="2" votes="0" created="2017-05-05 00:00:01"/>
 	<polls poll_id="5" poll_name="name" owner_id="2" votes="0" created="2017-05-05 00:00:01"/>
 	
-	<options option_id="1" option_name="opt1" poll_id="5" votes="0"/>
-	<options option_id="2" option_name="opt1" poll_id="4" votes="0"/>
-	<options option_id="3" option_name="opt2" poll_id="4" votes="0"/>
+	<options option_id="1" option_name="opt1" poll_id="5" votes="0" added="2017-05-05 00:00:01"/>
+	<options option_id="2" option_name="opt1" poll_id="4" votes="0" added="2017-05-05 00:00:01"/>
+	<options option_id="3" option_name="opt2" poll_id="4" votes="0" added="2017-05-05 00:00:01"/>
 </dataset>

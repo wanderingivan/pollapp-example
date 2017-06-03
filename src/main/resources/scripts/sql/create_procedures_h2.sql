@@ -1,4 +1,7 @@
 
+DROP ALIAS IF EXISTS addVote;
+DROP ALIAS IF EXISTS createPoll;
+
 CREATE ALIAS IF NOT EXISTS  addvote AS $$
 void addVote(Connection conn, long optId, long pollId) throws SQLException {
 
@@ -23,7 +26,7 @@ ResultSet createPoll(Connection conn, String pollName, String optionNames,String
 	conn.setAutoCommit(false);
 	
 	PreparedStatement pollCStmt = conn.prepareStatement("INSERT INTO polls(poll_name,description,owner_id,created) VALUES(?,?,(SELECT user_id FROM users WHERE username=?),CURRENT_TIMESTAMP())");
-	PreparedStatement optionCStmt = conn.prepareStatement("INSERT INTO options(option_name,poll_id) VALUES (?,?)");
+	PreparedStatement optionCStmt = conn.prepareStatement("INSERT INTO options(option_name,poll_id,added) VALUES (?,?,CURRENT_TIMESTAMP())");
 	
 	pollCStmt.setString(1,pollName);
 	pollCStmt.setString(2,description);

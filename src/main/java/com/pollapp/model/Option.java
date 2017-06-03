@@ -1,5 +1,7 @@
 package com.pollapp.model;
 
+import java.util.Date;
+
 
 public class Option {
 
@@ -8,6 +10,8 @@ public class Option {
 	private String optionName;
 	
 	private long voteCount;
+	
+	private Date added;
 	
 	public Option(){}
 	
@@ -47,5 +51,13 @@ public class Option {
 				.append(", votes=").append(voteCount).append("]");
 		return builder.toString();
 	}
+
+    public Date getAdded() {
+        return added;
+    }
+    
+    public void setAdded(Date added){
+        this.added = added;
+    }
 	
 }

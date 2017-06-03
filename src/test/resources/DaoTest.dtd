@@ -32,4 +32,5 @@
 	option_name CDATA #REQUIRED
 	poll_id     CDATA #REQUIRED
 	votes       CDATA #REQUIRED
+	added       CDATA #REQUIRED
 > 

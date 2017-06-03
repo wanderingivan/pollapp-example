@@ -39,6 +39,7 @@ CREATE TABLE `options` (
   `option_name` VARCHAR(100) NOT NULL,
   `votes`       BIGINT(20) NOT NULL DEFAULT '0',
   `poll_id`     BIGINT(20) unsigned NOT NULL,
+  `added`       DATETIME NOT NULL DEFAULT 0,
   PRIMARY KEY (`option_id`),
   CONSTRAINT `poll_id_fk` FOREIGN KEY (`poll_id`) REFERENCES `polls` (`poll_id`) ON DELETE CASCADE
 );
