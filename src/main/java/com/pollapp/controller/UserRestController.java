@@ -4,6 +4,8 @@ package com.pollapp.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -91,12 +93,14 @@ public class UserRestController {
 	@RequestMapping(value="/user/{id}",method=RequestMethod.PUT)
 	public ResponseEntity<User> editUser(@PathVariable long id,
 			                              @RequestBody User user,
-			                                      Principal principal){
+			                                      Principal principal,
+			                                      HttpServletRequest http){
 		try{
 		    if(logger.isInfoEnabled()){
 		        logger.info(String.format("User %s editing user %s",principal.getName(), user));
 		    }
 			service.editUser(user);
+			http.logout();
 			return new ResponseEntity<User>(user, HttpStatus.OK); 
 		}catch(Exception ex){
 			logger.error("Error caught editing user "+ user + "\n" + ex);
