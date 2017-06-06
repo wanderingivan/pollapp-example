@@ -19,7 +19,6 @@ import com.pollapp.filter.AngularSpringSecurityCsrfAdapterFilter;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 	
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth,DaoAuthenticationProvider authProvider)
@@ -38,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		    .mvcMatchers(HttpMethod.POST, "/polls/**").authenticated()
 		    .mvcMatchers(HttpMethod.PUT, "/polls/**").authenticated()
 		    .mvcMatchers(HttpMethod.DELETE, "/polls/**").authenticated()
+		    .mvcMatchers(HttpMethod.POST, "/upload/**").authenticated()
 		    .and()
 		    .formLogin()
 		    .and()
