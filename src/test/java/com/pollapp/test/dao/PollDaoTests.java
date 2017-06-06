@@ -26,10 +26,10 @@ public class PollDaoTests extends AbstractDaoTest {
 	@Transactional
 	public void testCreatePoll(){
 		Option[] options = new Option[]{new Option("opt1"),new Option("opt2")};
-		long id = dao.createPoll(new Poll("name",Arrays.asList(options),new User("username"),"description"));
+		long id = dao.createPoll(new Poll("name3",Arrays.asList(options),new User("username"),"description"));
 		Poll test = dao.retrievePollById(id);
 		assertNotNull(test);
-		assertEquals("name", test.getName());
+		assertEquals("name3", test.getName());
 		assertEquals(2, test.getOptions().size());
 		assertEquals("opt1", test.getOptions().get(0).getOptionName());
 		assertEquals("opt2", test.getOptions().get(1).getOptionName());

@@ -11,7 +11,7 @@ import com.pollapp.test.web.page.PollPage;
 import static org.junit.Assert.*;
 
 
-public class CreatePollPageTests extends AbstractWebPageTest {
+public class CreatePollPageTests extends AbstractWebPageTests {
     
     @Page
     private PollFormPage formPage;

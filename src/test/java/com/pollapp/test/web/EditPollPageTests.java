@@ -13,7 +13,7 @@ import com.pollapp.test.web.page.LoginPage;
 import com.pollapp.test.web.page.PollFormPage;
 import com.pollapp.test.web.page.PollPage;
 
-public class EditPollPageTests extends AbstractWebPageTest {
+public class EditPollPageTests extends AbstractWebPageTests {
 
     @Page
     private PollFormPage formPage;

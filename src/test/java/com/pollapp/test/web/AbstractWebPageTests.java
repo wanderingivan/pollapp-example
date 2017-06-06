@@ -17,7 +17,7 @@ import org.openqa.selenium.WebDriver;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class AbstractWebPageTest {
+public class AbstractWebPageTests {
 
     @Drone
     protected WebDriver driver;

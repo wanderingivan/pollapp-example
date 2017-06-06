@@ -11,7 +11,7 @@ import com.pollapp.test.web.page.UserPage;
 
 import static org.junit.Assert.*;
 
-public class CreateUserPageTests extends AbstractWebPageTest {
+public class CreateUserPageTests extends AbstractWebPageTests {
 
     
     @Page
