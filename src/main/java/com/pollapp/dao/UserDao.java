@@ -58,5 +58,7 @@ public interface UserDao {
 	void changePassword(String principal, String newPassword);
 	
 	String getPassword(String principal);
+
+    void changeImage(String principal, String fileName);
 	
 }

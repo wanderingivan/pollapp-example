@@ -136,4 +136,9 @@ public class JdbcUserDaoImpl extends AbstractJdbcDao implements UserDao{
 	public String getPassword(String principal){
 	    return template.queryForObject("SELECT password FROM users WHERE username = ?",new Object[]{principal}, String.class);
 	}
+
+    @Override
+    public void changeImage(String principal, String fileName) {
+       template.update("UPDATE users SET imagePath = ? WHERE username = ?", new Object[]{fileName,principal}); 
+    }
 }
