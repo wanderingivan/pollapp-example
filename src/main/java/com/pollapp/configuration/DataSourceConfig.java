@@ -31,7 +31,7 @@ public class DataSourceConfig {
 	@Value("${db.max_pool_size}")
 	private int maxPoolSize;
 	
-	@Bean
+	@Bean(destroyMethod="close")
 	public DataSource datasource() {
 		ComboPooledDataSource datasource = new ComboPooledDataSource();
 		try {
