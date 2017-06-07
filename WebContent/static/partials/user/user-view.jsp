@@ -24,8 +24,9 @@
           </div>          
           <div class="col-md-12">
 	        <div class="controlls pull-right" ng-show="username === view.user.username || admin">
-	          <a class="btn btn-primary" style="width:100%" ui-sref="editUser({id:view.user.id})">{{ 'EDIT' | translate}}</a><br/>
-	          <a class="btn btn-primary" ui-sref="changePassword({id:view.user.id})">{{ 'CHANGEPWD' | translate}}</a><br/>
+	          <a class="btn btn-primary user-edit" ui-sref="editUser({id:view.user.id})">{{ 'EDIT' | translate}}</a><br/>
+	          <a class="btn btn-primary user-edit" ui-sref="changePassword({id:view.user.id})">{{ 'CHANGEPWD' | translate}}</a><br/>
+	          <a class="btn btn-primary user-edit" ui-sref="upload">{{ 'CHANGEIMAGE' | translate}}</a><br/>
 	        </div>
 	        <div class="controlls pull-right" ng-show="admin">
 	          <a class="btn btn-danger" style="width:100%" ng-click="view.deleteUser(view.user)">{{ 'DELETE' | translate}}</a><br/>
