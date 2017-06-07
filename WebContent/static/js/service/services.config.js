@@ -64,4 +64,14 @@ angular.module('pollApp.services')
 	  	  }
 	  });
   	}                       
-  ]);
+  ])
+  .factory('UploadService',['$resource',
+    function($resource){
+	  return $resource('upload/:id',{id : '@id'},{
+		 upload : {
+			 method : 'POST',
+		     transformRequest: angular.identity,
+		     headers: { 'Content-Type': undefined }
+		 } 
+	  });
+  }]);
