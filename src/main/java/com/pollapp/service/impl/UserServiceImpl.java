@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.security.acls.domain.BasePermission;
 import org.springframework.security.acls.domain.ObjectIdentityImpl;
 import org.springframework.security.acls.domain.PrincipalSid;
@@ -115,5 +117,13 @@ public class UserServiceImpl implements UserService {
 	private boolean checkPassword(String principal, String password){
 		return encoder.matches(password, dao.getPassword(principal));
 	}
+
+    @Override
+    @Transactional
+	@Caching(evict={@CacheEvict(value="polls", allEntries=true),
+					@CacheEvict(value="recent",allEntries=true)})
+    public void changeImage(String principal, String fileName) {
+        dao.changeImage(principal,fileName);
+    }
 
 }

@@ -64,4 +64,6 @@ public interface UserService {
 	void changePassword(String newPassword, String oldPassword,
 			Principal principal);
 
+    void changeImage(String principal, String fileName);
+
 }
