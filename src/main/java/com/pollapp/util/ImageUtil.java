@@ -2,12 +2,14 @@ package com.pollapp.util;
 
 
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -79,26 +81,26 @@ public class ImageUtil {
 	 *  can write compressed images(e.g. yes for jpg no for png).
 	 *  
 	 * @param input The image file to be saved
-	 * @param contentType the content type of the file 
-	 * @param fileName the file name the file will be saved with
 	 */
-	public String saveImage(File input,String contentType,String fileName) {
+	public String saveImage(MultipartFile input) {
+	    String fileName = input.getOriginalFilename();
+	    String contentType = input.getContentType();
 		OutputStream out = null;
 		ImageOutputStream imageOut = null;
 		ImageWriter writer = null;
 		BufferedImage image = null;
 		File dest = null;			
-
+		InputStream fileInput = null;
 		try{
+		    fileInput = input.getInputStream();
 			//Do we need conversion
 			if(convertToJpg && contentType != "image/jpg"){
-				image = convertToJpg(ImageIO.read(input));
+				image = convertToJpg(ImageIO.read(fileInput));
 				fileName = fileName.substring(0, fileName.lastIndexOf('.'))
 						           .concat(".jpg");
 			}else{
-				image = ImageIO.read(input);
+				image = ImageIO.read(fileInput);
 			}
-			
 			dest = new File(defaultDestPath,fileName);
 			//Set up writer
 			out = new FileOutputStream(dest);
@@ -110,11 +112,10 @@ public class ImageUtil {
 			
 			ImageWriteParam param = writer.getDefaultWriteParam();
 			//Do we want compression 
-		    if(input.length() > maxUncompressedSize && param.canWriteCompressed()){  
+		    if(input.getSize() > maxUncompressedSize && param.canWriteCompressed()){  
 		    	param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
 		    	param.setCompressionQuality(0.7f);	
 		    }
-		    
 		    writer.write(null, new IIOImage(image,null,null), param);
 		    
 		}catch(Exception e){
@@ -122,6 +123,7 @@ public class ImageUtil {
 			throw new RuntimeException(e);
 		}finally{
 			try {			
+			    fileInput.close();
 				writer.dispose(); // Looking at the sources for ImageWriter and its various implementations it's hard to 
 				imageOut.close(); // discern whether it actually frees resources e.g in the abstract ImageWriter class dispose() is just 
 				out.close();      // an empty method. Some subclasses have their own implementations of dispose() and some don't

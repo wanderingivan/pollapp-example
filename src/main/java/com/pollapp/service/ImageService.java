@@ -3,6 +3,8 @@ package com.pollapp.service;
 import java.io.File;
 import java.io.IOException;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 /**
  * 
@@ -35,9 +37,6 @@ public interface ImageService {
 	/**
 	 * Saves an image to a predefined destination
 	 * @param file
-	 * @param contentType
-	 * @param fileName
-	 * @throws IOException
 	 */
-	String saveImage(File file,String contentType,String fileName) throws IOException;
+	String saveImage(MultipartFile file) throws IOException;
 }

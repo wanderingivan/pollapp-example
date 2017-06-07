@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pollapp.service.ImageService;
 import com.pollapp.util.ImageUtil;
@@ -72,8 +73,8 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public String saveImage(File file, String contentType, String fileName) throws IOException{
-		 return imageUtil.saveImage(file, contentType, fileName);
+	public String saveImage(MultipartFile file) throws IOException{
+		 return imageUtil.saveImage(file);
 	}
 
 }
