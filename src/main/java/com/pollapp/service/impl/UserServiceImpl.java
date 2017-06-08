@@ -3,7 +3,6 @@ package com.pollapp.service.impl;
 import java.security.Principal;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.security.acls.domain.BasePermission;
@@ -13,7 +12,6 @@ import org.springframework.security.acls.model.MutableAcl;
 import org.springframework.security.acls.model.MutableAclService;
 import org.springframework.security.acls.model.Sid;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pollapp.exception.IncorrectPasswordException;
@@ -29,26 +27,27 @@ import com.pollapp.service.UserService;
  * @see com.pollapp.dao.UserDao
  *
  */
-@Service
 public class UserServiceImpl implements UserService {
 
 	private UserDao dao;
 	private MutableAclService aclService;
 	private PasswordEncoder encoder;
+	private String defaultProfilePic;
 	
 	
-	@Autowired
-	public UserServiceImpl(UserDao dao, MutableAclService service,PasswordEncoder encoder) {
+	public UserServiceImpl(UserDao dao, MutableAclService service,PasswordEncoder encoder,String defaultProfilePic) {
 		super();
 		this.dao = dao;
 		this.aclService = service;
 		this.encoder = encoder;
+		this.defaultProfilePic = defaultProfilePic;
 	}
 
 	@Override
 	@Transactional
 	public long createUser(User user) {
 		user.setPassword(encoder.encode(user.getPassword()));
+		user.setImagePath(defaultProfilePic);
 		long userId = dao.createUser(user);
 		user.setId(userId);
 		createAcl(user);

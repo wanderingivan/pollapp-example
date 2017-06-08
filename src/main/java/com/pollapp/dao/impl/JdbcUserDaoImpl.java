@@ -29,7 +29,7 @@ import com.pollapp.model.User;
 @Repository
 public class JdbcUserDaoImpl extends AbstractJdbcDao implements UserDao{
 
-	private static final String createUserStatement = "INSERT INTO users(username,email,password,description,joined) VALUES (?,?,?,?,?)",
+	private static final String createUserStatement = "INSERT INTO users(username,email,password,description,imagePath,joined) VALUES (?,?,?,?,?,?)",
 								
 								searchUsersStatement = "SELECT u.user_id as id, "
 										                    + "u.username, "
@@ -73,7 +73,8 @@ public class JdbcUserDaoImpl extends AbstractJdbcDao implements UserDao{
 		super(template);
 		insertStatementFactory = new PreparedStatementCreatorFactory(createUserStatement,
 														             new int []{Types.VARCHAR,Types.VARCHAR,
-																			    Types.VARCHAR,Types.VARCHAR,Types.DATE});
+																			    Types.VARCHAR,Types.VARCHAR,
+																			    Types.VARCHAR,Types.DATE});
 		insertStatementFactory.setReturnGeneratedKeys(true);
 		userMapper =  new UserRowMapper();
 	}
@@ -83,7 +84,8 @@ public class JdbcUserDaoImpl extends AbstractJdbcDao implements UserDao{
 		KeyHolder generatedId = new GeneratedKeyHolder();
 
 		template.update(insertStatementFactory.newPreparedStatementCreator(new Object[]{user.getUsername(),user.getEmail(),
-																		                user.getPassword(),user.getDescription(),new Date(System.currentTimeMillis())}),
+																		                user.getPassword(),user.getDescription(),
+																		                user.getImagePath(),new Date(System.currentTimeMillis())}),
 																		   generatedId);
 		template.update(insertAuthorityStatement, new Object []{user.getUsername()});
 		return (long) generatedId.getKey();
