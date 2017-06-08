@@ -26,6 +26,7 @@ public class UserDaoTests extends AbstractDaoTest{
 		test.setUsername("name");
 		test.setPassword("password");
 		test.setEmail("email");
+		test.setImagePath("user-default.jpg");
 		long id = dao.createUser(test);
 		test.setId(id);
 		User saved = dao.retrieveUserById(id);

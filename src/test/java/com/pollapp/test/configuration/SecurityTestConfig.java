@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.security.acls.model.MutableAclService;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
@@ -21,6 +22,8 @@ import com.pollapp.dao.PollDao;
 import com.pollapp.dao.UserDao;
 import com.pollapp.model.Poll;
 import com.pollapp.model.User;
+import com.pollapp.service.UserService;
+import com.pollapp.service.impl.UserServiceImpl;
 
 @Configuration
 @ComponentScan("com.pollapp.service")
@@ -70,6 +73,12 @@ public class SecurityTestConfig {
 		dao.setEnableAuthorities(true);
 		dao.afterPropertiesSet();
 		return dao;
+	}
+	
+	@Bean
+	@Autowired
+	public UserService userServiceImpl(MutableAclService service){
+	    return new UserServiceImpl(userDaoMock(), service, passwordEncoder(), "defaultProfilePic");
 	}
 	
 	@Bean 
