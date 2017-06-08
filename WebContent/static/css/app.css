@@ -115,7 +115,6 @@
   		line-height : 30px;
   	}
   	.image-container img {
-  		width:272px;
   		height:180px;
   	}
 	.line{
@@ -141,7 +140,6 @@
 		font-size:10px;
 	}
 	.poll-box img {
-		width: 100% !important; 
 	}
 	.poll-box .line{
 		width:85%;
