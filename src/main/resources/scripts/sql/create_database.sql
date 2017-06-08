@@ -31,6 +31,7 @@ CREATE TABLE `polls` (
   `owner_id`    BIGINT(20) unsigned NOT NULL,
   `created`     DATETIME NOT NULL DEFAULT 0,
   PRIMARY KEY (`poll_id`),
+  UNIQUE KEY `poll_name`(`poll_name`),
   CONSTRAINT `owner_id_fk` FOREIGN KEY (`owner_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
 );
 
@@ -56,7 +57,7 @@ CREATE TABLE `votes` (
 CREATE TABLE `authorities` (
   `username` VARCHAR(50) NOT NULL,
   `authority` VARCHAR(50) NOT NULL,
-  CONSTRAINT `username_fk` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+  CONSTRAINT `username_fk` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Acl Required Tables
