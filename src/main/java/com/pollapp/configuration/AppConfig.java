@@ -15,14 +15,19 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.acls.model.MutableAclService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.pollapp.dao.UserDao;
 import com.pollapp.service.ImageService;
+import com.pollapp.service.UserService;
 import com.pollapp.service.impl.ImageServiceImpl;
+import com.pollapp.service.impl.UserServiceImpl;
 import com.pollapp.util.ImageUtil;
  
 @Configuration
@@ -47,6 +52,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	
 	@Value("${image.placeholder.filename}")
 	private String placeholder;
+	
+	@Value("${image.defaultProfileImagePath}")
+	private String defaultProfilePic;
 	
 	@Bean
 	@Autowired
@@ -84,6 +92,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+    }
+    
+    @Bean
+    @Autowired
+    public UserService userServiceImpl(UserDao dao,MutableAclService service, PasswordEncoder encoder){
+        return new UserServiceImpl(dao, service, encoder, defaultProfilePic);
     }
     
     
