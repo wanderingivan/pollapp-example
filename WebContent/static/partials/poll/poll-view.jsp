@@ -42,6 +42,7 @@
 		      <canvas id="doughnut" class="chart chart-doughnut"
                   chart-data="view.data" chart-labels="view.labels" chart-colors="view.colors" chart-options="view.options" >
               </canvas> 
+              <h2 style="text-align:center;text-transform:capitalize">{{view.poll.name}}</h2>
 	  	    </div>	 		
 	  	    <div class="message well well-sm" ng-if="view.poll.votes<1">
 	  	      <h4>No one has voted yet</h4>

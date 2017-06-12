@@ -20,7 +20,7 @@
 <div class="form-group" data-ng-repeat="opt in ctl.poll.options">
   <div class="col-sm-10">
     <input id="optionInput{{$index}}" type="text" name="option" class="form-control" ng-model="opt.optionName" value="" class=""  placeholder="{{ 'OPTNAME' | translate}}" required>
-    <div class="btn btn-default" ng-show="$last" ng-click="ctl.addNewOption()"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;{{ 'ADDOPT' | translate}}</div>
+    <div class="btn btn-default" ng-show="$last" ng-click="ctl.addOption()"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;{{ 'ADDOPT' | translate}}</div>
   </div>
 </div>
 <hr/>

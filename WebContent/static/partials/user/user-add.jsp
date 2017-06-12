@@ -27,7 +27,7 @@
 
               <div class="form-input">
                 <i class="fa fa-envelope prefix"></i>
-                <input type="text" id="mail" name="email" ng-model="ctl.user.email" placeholder="{{ 'EMAIL' | translate}}" class="form-control" required />
+                <input type="email" id="mail" name="email" ng-model="ctl.user.email" placeholder="{{ 'EMAIL' | translate}}" class="form-control" required />
                 <div ng-show="userform.$submitted || userform.email.$touched"  class="colortext">
       			  <div id="emailError" ng-show="userform.email.$invalid">{{ 'EMAILINVALID' | translate}}</div>
                 </div>

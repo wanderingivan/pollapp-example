@@ -12,17 +12,17 @@
       </div>
       <div class="container">
         <div class="row details">
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-12">
            <div class="image-container">
 			  <img class="user-image" ng-src="images/{{view.user.imagePath}}" alt="{{view.user.username}} 's profile pic"></img>             
            </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-6 col-xs-12">
             <h3>{{ 'ABOUT' | translate}}</h3>
             <p id="description">{{view.user.description}}</p>
             <p class="text-muted text-center">{{ 'JOINED' | translate}}: {{view.user.joined | date }} </p>
           </div>          
-          <div class="col-md-12">
+          <div class="col-md-3 col-sm-6 col-xs-12">
 	        <div class="controlls pull-right" ng-show="username === view.user.username || admin">
 	          <a class="btn btn-primary user-edit" ui-sref="editUser({id:view.user.id})">{{ 'EDIT' | translate}}</a><br/>
 	          <a class="btn btn-primary user-edit" ui-sref="changePassword({id:view.user.id})">{{ 'CHANGEPWD' | translate}}</a><br/>
