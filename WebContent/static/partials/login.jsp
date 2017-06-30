@@ -41,6 +41,9 @@
           <div class="options">
             <p>{{ 'NOT_MEMBER' | translate}}&nbsp;?<a ui-sref="newUser"><span class="colortext">&nbsp;{{ 'SIGNUP' | translate}}</span></a></p>
           </div>
+          <div class="alert alert-info text-center">
+	  	    Premade accounts are username1 through username4 with password <i>password</i>
+	      </div>
         </div>
       </div>
     </div>
